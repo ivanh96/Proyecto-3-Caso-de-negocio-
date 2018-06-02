@@ -259,7 +259,7 @@ for(d in 1:days){
   cId<-max(Customer$CustomerId)
   
   i<-1
-  n<-sample(1:15, 1)
+  n<-sample(1:10, 1)
   while(i<=n){
     CustomerNew<-data.frame(matrix(ncol=length(Customer), nrow=0))
     
@@ -339,11 +339,11 @@ for(d in 1:days){
   invoiceId<-max(Invoice$InvoiceId)
   
   for(i in min(newCustomer):max(newCustomer)){
-    customer<-dbGetQuery(con, 'SELECT * FROM "Customer"')
+    Customer<-dbGetQuery(con, 'SELECT * FROM "Customer"')
     
     invoiceId<-invoiceId+1
     
-    customer<-Customer[customer$CustomerId==i,]
+    customer<-Customer[Customer$CustomerId==i,]
   
     invoiceDate<- as.Date(format(Sys.Date(), "%Y-%m-%d 00:00:00"))+d
     
@@ -361,6 +361,7 @@ for(d in 1:days){
   rm(Invoice)
   rm(InvoiceLine)
   rm(Track)
+  rm(Customer)
   gc(verbose = FALSE)
   # /NEW INVOICE ------------------------------------------------------------
   cat("DIA",d,"FINALIZADO\n")
