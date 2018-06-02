@@ -20,7 +20,7 @@ require("RPostgreSQL")
 drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, dbname = db, host = "localhost", port = 5432, user = us, password = ps)
 
-randoms<-read.csv("MOCK_DATA2.csv", encoding = "UTF-8", check.names = F)
+randoms<-read.csv("MOCK_DATA.csv", encoding = "UTF-8", check.names = F)
 
 
 {
