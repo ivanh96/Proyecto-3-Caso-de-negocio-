@@ -185,23 +185,22 @@ for(d in 1:days){
   
   # NEW TRACK ------------------------------------------------------------
   Album<- dbGetQuery(con, 'SELECT * FROM "Album"')
-  Track<- dbGetQuery(con, 'SELECT * FROM "Track"')
+  Track<- dbGetQuery(con, 'SELECT "TrackId" FROM "Track"')
   newTrack<-vector()
   k<-1
   
   tId<-max(Track$TrackId)
   
   for(i in min(newAlbum):max(newAlbum)){
-    
-    n<-sample(1:5, 1)
+    n<-sample(1:2, 1)
     j<-1
     while(n>=j){
+      Track<- dbGetQuery(con, 'SELECT * FROM "Track" LIMIT 1')
       TrackNew<-data.frame(matrix(ncol=length(Track), nrow=0))
       
       tId<-tId+1
       
       x<-sample(1:4, 1)
-      
       if(x==1){
         name<- toString(randoms$phrase1[sample(1:500, 1)])
       }
@@ -218,23 +217,32 @@ for(d in 1:days){
         lastName<- toString(randoms$words2[sample(1:500, 1)])
         name<-paste(firstName, lastName)
       }
-      
+
       aId<- i
-      
+      Track<- dbGetQuery(con, 'SELECT "MediaTypeId" FROM "Track"')
       type<-sample(min(Track$MediaTypeId):max(Track$MediaTypeId), 1)
       
+      Track<- dbGetQuery(con, 'SELECT "GenreId" FROM "Track"')
       genre<-sample(min(Track$GenreId):max(Track$GenreId), 1)
       
       firstName<- randomNames(which.names = "first")
       lastName<- randomNames(which.names = "last")
       composer<-paste(firstName, lastName)
-      
+    
+      Track<- dbGetQuery(con, 'SELECT "Milliseconds" FROM "Track"')
       ms <- sample(min(Track$Milliseconds):max(Track$Milliseconds), 1)
       
-      bytes <- sample(min(Track$Bytes):max(Track$Bytes), 1)
+      minb<- as.numeric(dbGetQuery(con, 'SELECT MIN("Bytes") FROM "Track"'))
+      maxb<- as.numeric(dbGetQuery(con, 'SELECT MAX("Bytes") FROM "Track"'))
+      
+      
+      bytes <- runif(1, minb,maxb)
+      bytes<-floor(bytes)
       
       price<- 0.99
+
       
+      Track<- dbGetQuery(con, 'SELECT * FROM "Track" LIMIT 1')
       x<-data.frame(tId, name, aId, type, genre, composer, ms, bytes, price)
       names(x)<-colnames(Track)
       TrackNew <- rbind(x, TrackNew)
@@ -248,6 +256,8 @@ for(d in 1:days){
   cat("SE AGREGARON",length(newTrack),"FILAS A LA TABLA Track\n")
   rm(Album)
   rm(Track)
+  rm(minb)
+  rm(maxb)
   gc(verbose = FALSE)
   # /NEW TRACK ------------------------------------------------------------
   
