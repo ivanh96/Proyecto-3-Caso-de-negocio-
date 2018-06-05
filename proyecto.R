@@ -151,7 +151,7 @@ for(d in 1:days){
     x<-sample(1:4, 1)
     
     if(x==1){
-      title<- toString(randoms$phrase1[sample(1:500, 1)])
+      title<- toString(randoms$phrase1[sample(1:100, 1)])
     }
     if(x==2){
       firstName<- toString(randoms$phrase1[sample(1:100, 1)])
