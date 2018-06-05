@@ -50,7 +50,7 @@ for(d in 1:days){
     firstName<- randomNames(which.names = "first")
     lastName<- randomNames(which.names = "last")
     
-    title<- toString(randoms$title[sample(1:500, 1)])
+    title<- toString(randoms$title[sample(1:100, 1)])
     rep<-sample(1:6, 1)
     
     birth<- as.Date(paste(sample(1947:1995,1), sample(1:12,1), sample(1:30,1), sep = "-"))
@@ -65,11 +65,11 @@ for(d in 1:days){
     }else{
       state<- ""
     }
-    city<- toString(randoms$city[sample(1:500, 1)])
+    city<- toString(randoms$city[sample(1:100, 1)])
     postal<- toString(sample(state.area, 1))
-    phone<- toString(randoms$phone[sample(1:500, 1)])
-    fax<- toString(randoms$phone[sample(1:500, 1)])
-    email<-toString(randoms$email[sample(1:500, 1)])
+    phone<- toString(randoms$phone[sample(1:100, 1)])
+    fax<- toString(randoms$phone[sample(1:100, 1)])
+    email<-toString(randoms$email[sample(1:100, 1)])
     
     x<-data.frame(eId, firstName, lastName, title, rep, birth, hire, address, city, state, country, postal, phone, fax, email)
     names(x)<-colnames(Employee)
@@ -106,16 +106,16 @@ for(d in 1:days){
       name<-paste(firstName, lastName)
     }
     if(x==2){
-      firstName<- toString(randoms$phrase1[sample(1:500, 1)])
-      lastName<- toString(randoms$phrase1[sample(1:500, 1)])
+      firstName<- toString(randoms$phrase1[sample(1:100, 1)])
+      lastName<- toString(randoms$phrase1[sample(1:100, 1)])
       name<-paste(firstName, lastName)
     }
     if(x==3){
-      name<- toString(randoms$appname[sample(1:500, 1)])
+      name<- toString(randoms$appname[sample(1:100, 1)])
     }
     if(x==4){
-      firstName<- toString(randoms$words1[sample(1:500, 1)])
-      lastName<- toString(randoms$words2[sample(1:500, 1)])
+      firstName<- toString(randoms$words1[sample(1:100, 1)])
+      lastName<- toString(randoms$words2[sample(1:100, 1)])
       name<-paste(firstName, lastName)
     }
     
@@ -154,16 +154,16 @@ for(d in 1:days){
       title<- toString(randoms$phrase1[sample(1:500, 1)])
     }
     if(x==2){
-      firstName<- toString(randoms$phrase1[sample(1:500, 1)])
-      lastName<- toString(randoms$phrase2[sample(1:500, 1)])
+      firstName<- toString(randoms$phrase1[sample(1:100, 1)])
+      lastName<- toString(randoms$phrase2[sample(1:100, 1)])
       title<-paste(firstName, lastName)
     }
     if(x==3){
-      title<- toString(randoms$words1[sample(1:500, 1)])
+      title<- toString(randoms$words1[sample(1:100, 1)])
     }
     if(x==4){
-      firstName<- toString(randoms$words1[sample(1:500, 1)])
-      lastName<- toString(randoms$words2[sample(1:500, 1)])
+      firstName<- toString(randoms$words1[sample(1:100, 1)])
+      lastName<- toString(randoms$words2[sample(1:100, 1)])
       title<-paste(firstName, lastName)
     }
     
@@ -202,19 +202,19 @@ for(d in 1:days){
       
       x<-sample(1:4, 1)
       if(x==1){
-        name<- toString(randoms$phrase1[sample(1:500, 1)])
+        name<- toString(randoms$phrase1[sample(1:100, 1)])
       }
       if(x==2){
-        firstName<- toString(randoms$phrase1[sample(1:500, 1)])
-        lastName<- toString(randoms$phrase2[sample(1:500, 1)])
+        firstName<- toString(randoms$phrase1[sample(1:100, 1)])
+        lastName<- toString(randoms$phrase2[sample(1:100, 1)])
         name<-paste(firstName, lastName)
       }
       if(x==3){
-        name<- toString(randoms$words1[sample(1:500, 1)])
+        name<- toString(randoms$words1[sample(1:100, 1)])
       }
       if(x==4){
-        firstName<- toString(randoms$words1[sample(1:500, 1)])
-        lastName<- toString(randoms$words2[sample(1:500, 1)])
+        firstName<- toString(randoms$words1[sample(1:100, 1)])
+        lastName<- toString(randoms$words2[sample(1:100, 1)])
         name<-paste(firstName, lastName)
       }
 
@@ -279,20 +279,20 @@ for(d in 1:days){
     lastName<- randomNames(which.names = "last")
     
     company<- ""
-    address<- toString(randoms$address[sample(1:500, 1)])
+    address<- toString(randoms$address[sample(1:100, 1)])
     
-    country<-toString(randoms$country[sample(1:500, 1)])
+    country<-toString(randoms$country[sample(1:100, 1)])
     
     if(country=="United States"){
       state<- sample(state.abb, 1)
     }else{
       state<- ""
     }
-    city<- toString(randoms$city[sample(1:500, 1)])
+    city<- toString(randoms$city[sample(1:100, 1)])
     postalCode<- toString(sample(state.area, 1))
-    phone<- toString(randoms$phone[sample(1:500, 1)])
+    phone<- toString(randoms$phone[sample(1:100, 1)])
     fax<-""
-    email<-toString(randoms$email[sample(1:500, 1)])
+    email<-toString(randoms$email[sample(1:100, 1)])
     
     repId<-unique(Customer$SupportRepId)
     support<-repId[sample(1:length(repId), 1)]
