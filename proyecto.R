@@ -377,6 +377,47 @@ for(d in 1:days){
   cat("DIA",d,"FINALIZADO\n")
   
 }
+#Crear CSV
+{
+  cat("CREAR CSV(y/n): ");
+  yn <- readLines("stdin",n=1);
+}
+if(yn!="n"){
+  Employee<-dbGetQuery(con, 'SELECT * FROM "Employee"')
+  write.csv(Employee, file = "Employee.csv", row.names = FALSE)
+  print("CREADO Employee.csv")
+  rm(Employee)
+  
+  Artist<- dbGetQuery(con, 'SELECT * FROM "Artist"')
+  write.csv(Artist, file = "Artist.csv", row.names = FALSE)
+  print("CREADO Artist.csv")
+  rm(Artist)
+  
+  Album<- dbGetQuery(con, 'SELECT * FROM "Album"')
+  write.csv(Album, file = "Album.csv", row.names = FALSE)
+  print("CREADO Album.csv")
+  rm(Album)
+  
+  Track<- dbGetQuery(con, 'SELECT * FROM "Track"')
+  write.csv(Track, file = "Track.csv", row.names = FALSE)
+  print("CREADO Track.csv")
+  rm(Track)
+  
+  Customer<- dbGetQuery(con, 'SELECT * FROM "Customer"')
+  write.csv(Customer, file = "Customer.csv", row.names = FALSE)
+  print("CREADO Customer.csv")
+  rm(Customer)
+  
+  Invoice<- dbGetQuery(con, 'SELECT * FROM "Invoice"')
+  write.csv(Invoice, file = "Invoice.csv", row.names = FALSE)
+  print("CREADO Invoice.csv")
+  rm(Invoice)
+  
+  InvoiceLine<- dbGetQuery(con, 'SELECT * FROM "InvoiceLine"')
+  write.csv(InvoiceLine, file = "InvoiceLine.csv", row.names = FALSE)
+  print("CREADO InvoiceLine.csv")
+  rm(InvoiceLine)
+}
 
 # close the connection
 dbDisconnect(con)
